@@ -42,20 +42,26 @@ function findShortestPath(matrix, start, end) {
 function getWalkableNeighbors(matrix, row, col) {
 	let neighbors = [];
 
-	if (matrix[row+1][col] === false) neighbors.push([row+1, col])
-	if (matrix[row-1][col] === false) neighbors.push([row-1, col])		
-	if (matrix[row][col+1] === false) neighbors.push([row, col+1])
-	if (matrix[row][col-1] === false) neighbors.push([row, col-1])
+	if ( isWalkable(matrix, row+1, col) ) neighbors.push([row+1, col])
+	if ( isWalkable(matrix, row-1, col) ) neighbors.push([row-1, col])		
+	if ( isWalkable(matrix, row, col+1) ) neighbors.push([row, col+1])
+	if ( isWalkable(matrix, row, col-1) ) neighbors.push([row, col-1])
 
 	return neighbors;		
 }
 
-function isWalkable
+function isWalkable(matrix, row, col) {
+	if (!matrix[row]) return false;
+	if (row < 0 || row > matrix.length-1 ) return false;
+	if (col < 0 || col > matrix.length-1 ) return false;
+
+	return !matrix[row][col];
+}
 
 let matrix = [
 	[false, false, false, false],
-	[true, true, false, true],
-	[false, false, false, false],
+	[false, true, true, false],
+	[false, false, true, false],
 	[false, false, false, false]]
 let start = [3, 0], end = [ 0, 0];
 let output = findShortestPath(matrix, start, end); 
