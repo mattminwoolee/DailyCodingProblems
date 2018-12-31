@@ -24,10 +24,13 @@ function constructSentence ( dict, sentence ) {
 			word = '';
 		}
 	}
-	return output;
+	return output.length > 0 ? output : null;
 }
 
 let dict = new Set(['quick', 'brown' , 'the', 'fox']);
 let sent = 'thequickbrownfox';
 let output = constructSentence(dict, sent);
 console.log(output);
+
+
+
