@@ -51,7 +51,7 @@ function makePalindrome(str) {
 	}
 }
 
-console.log(makePalindrome('google'))
+console.log(makePalindrome('abcd'))
 
 // outputs elgoogle
 // runs O(2^n) time because it makes two recursive calls each time/call stack
